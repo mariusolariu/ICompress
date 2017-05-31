@@ -15,7 +15,7 @@ public class SplashScreen implements Screen {
     private Start app;
     private long startTime;
     private long currentTime;
-private SpriteBatch spriteBatch;
+    private SpriteBatch spriteBatch;
     private Texture logoTexture;
 
     public SplashScreen(Start app){

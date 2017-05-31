@@ -18,7 +18,7 @@ public class Start extends Game {
 		this.infoAndroid = infoAndroid;
 
 		archivesFolderPath = infoAndroid.getExternalStoragePath() + "/iCompress Archives";
-		unarchivedFilesFolderPath = infoAndroid.getExternalStoragePath() + "/iCompress Unarchived Files";
+		unarchivedFilesFolderPath = infoAndroid.getExternalStoragePath() + "/iCompress Unpacked Files";
 	}
 
 

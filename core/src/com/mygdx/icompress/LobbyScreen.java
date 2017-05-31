@@ -2,7 +2,6 @@ package com.mygdx.icompress;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -16,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -47,7 +45,13 @@ public class LobbyScreen implements Screen {
     private Skin skin;
     private ScrollPane scrollPane;
     private Table scrollPaneTable;
-    private ProgressBar progressBar;
+    private TextField archiveNameT_Field;
+    private CheckBox selectAllCheckBox;
+    private Label currentRootFolderPathLabel;
+    private Label.LabelStyle labelStyle;
+    private Dialog archiveNameDialog;
+    private Dialog packingFileDialog;
+    private Dialog unpackingFileDialog;
 
     //resources
     private BitmapFont gilsansFont;
@@ -56,13 +60,8 @@ public class LobbyScreen implements Screen {
     private TextureRegion randomFileT_Region;
     private TextureRegion folderT_Region;
     private TextureRegion imageIconT_Region;
-    private Image upFolderIcon;
-    private CheckBox selectAllCheckBox;
-    private Label currentRootFolderPathLabel;
-    private Label.LabelStyle labelStyle;
     private TextureRegionDrawable backgroundDrawable;
-    private Dialog archiveNameDialog;
-    private TextField archiveNameT_Field;
+
 
     //archive objects
     private Zip zip;
@@ -74,7 +73,6 @@ public class LobbyScreen implements Screen {
     private String rootFolderPath;
     private FileHandle rootFolder;
     private ArrayList<File> selectedFiles;
-
 
 
     public LobbyScreen(Start app) {
@@ -101,17 +99,18 @@ public class LobbyScreen implements Screen {
 
         labelStyle = new Label.LabelStyle(gilsansFont, Color.BLACK);
 
-        rootFolderPath = Gdx.files.getExternalStoragePath();
+        rootFolderPath = app.getExternalStoragePath();
         rootFolder = Gdx.files.absolute(rootFolderPath);
 
         backgroundDrawable = new TextureRegionDrawable(new TextureRegion(new Texture("bg_iCompress.png")));
 
         createIconResources();
         initializeRootTable();
+        initializeDialogs();
         initializeArchiveTable();
         initializeScrollPanel();
         addScrollablePaneContent();
-        initializeDialog();
+
 
         stage.addActor(rootTable);
 
@@ -142,7 +141,7 @@ public class LobbyScreen implements Screen {
         archiveTable.add(archiveImg).right();
         archiveTable.add(unarchiveImg).left();
 
-        rootTable.add(archiveTable).height(2 * app.heightDistanceUnit).padBottom(app.heightDistanceUnit);
+        rootTable.add(archiveTable).height(2 * Start.heightDistanceUnit).padBottom(Start.heightDistanceUnit);
         rootTable.row();
 
         addListenersArchiveIcons(archiveImg, unarchiveImg);
@@ -153,14 +152,10 @@ public class LobbyScreen implements Screen {
     private void addListenersArchiveIcons(final Image archiveImg, Image unarchiveImg) {
 
         archiveImg.addListener(new ClickListener() {
+
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
-
                 archiveNameDialog.show(stage);
-
-
-
             }
         });
 
@@ -175,12 +170,13 @@ public class LobbyScreen implements Screen {
 
                 removeNonArchiveFiles();
 
-                unzip.unarchiveFiles(selectedFiles, app.getUnarchivedFilesFolderPath());
+                displayUnpackingDialogUnpackArchive();
 
             }
         });
 
     }
+
 
     private void removeNonArchiveFiles() {
         //remove all files that are not ".zip"
@@ -207,44 +203,107 @@ public class LobbyScreen implements Screen {
         }
     }
 
-    private void initializeDialog() {
-        archiveNameDialog = new Dialog("Choose archive name !", skin);
-       // archiveNameDialog.setScale(1.3f);
+    private void initializeDialogs() {
+        float dialogWidth = 2 * Start.deviceWidth / 3;
+        float dialogHeight = 4 * Start.heightDistanceUnit;
 
-        archiveNameDialog.text("Please type an archive name \n and hit <<ok>> button !");
+        archiveNameDialog = new MyDialog("Choose archive name !", skin, dialogWidth, dialogHeight);
+        packingFileDialog = new MyDialog("Packing...", skin, dialogWidth, dialogHeight);
+        unpackingFileDialog = new MyDialog("Unpacking...", skin, dialogWidth, dialogHeight);
+        //archiveNameDialog.debug();
+
+        // centering the gif in the middle of the dialog
+        float gifWidth = Start.deviceWidth / 2;
+        float gifHeight = dialogHeight - packingFileDialog.getTitleLabel().getWidth();
+        float xPosition = dialogWidth / 2 - gifWidth / 2;
+        float yPosition = (dialogHeight - gifHeight) / 3;
+        LoadingGifActor gifActorPacking = new LoadingGifActor(xPosition, yPosition, gifWidth, gifHeight);
+        LoadingGifActor gifActorUnpacking = new LoadingGifActor(xPosition, yPosition, gifWidth, gifHeight);
+
+        packingFileDialog.add(gifActorPacking);
+        unpackingFileDialog.add(gifActorUnpacking);
+
 
         final TextField.TextFieldStyle textFieldStyle = skin.get(TextField.TextFieldStyle.class);
         textFieldStyle.font.getData().setScale(2f);
         archiveNameT_Field = new TextField("", textFieldStyle);
-
-        archiveNameDialog.add(archiveNameT_Field);
-        archiveNameDialog.row();
-
         TextButton okButton = new TextButton("Ok", skin);
+
+        archiveNameDialog.text("Please type an archive name \n and hit <<ok>> button !").row();
+        archiveNameDialog.getButtonTable().add(archiveNameT_Field).width(2 * dialogWidth / 3).row();
+        archiveNameDialog.getButtonTable().add(okButton).width(dialogWidth / 3);
 
         okButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+
                 //clears the previous files stored (the contents of the previously created archive)
                 selectedFiles.clear();
 
                 getSelectedFiles();
 
-                String archiveName = archiveNameT_Field.getText() + ".zip";
-                zip.archiveFiles(selectedFiles, app.getArchivesFolderPath(), archiveName);
-
                 Gdx.input.setOnscreenKeyboardVisible(false);
 
-                archiveNameDialog.cancel();
+                archiveNameDialog.hide();
+
+                try {
+                    displayLoadingDialogPackArchive();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
-        archiveNameDialog.button(okButton);
+    }
 
-        archiveNameDialog.getStyle().background.setMinWidth(2 / 3 * app.deviceWidth);
-        archiveNameDialog.getStyle().background.setMinHeight(2 * app.heightDistanceUnit);
+    private void displayLoadingDialogPackArchive() throws InterruptedException {
+        final String archiveName = archiveNameT_Field.getText() + ".zip";
+
+        packingFileDialog.show(stage);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    zip.archiveFiles(selectedFiles, app.getArchivesFolderPath(), archiveName);
+
+                    //that's how you communicate with the rendering thread using libGDX (in order to send some results)
+                    Gdx.app.postRunnable(new Runnable() {
+                        @Override
+                        public void run() {
+                            packingFileDialog.hide();
+                            //clear the last name typed from the textbox
+                            archiveNameT_Field.setText("");
+
+                        }
+                    });
+                }
+            }).start();
 
     }
+
+
+    private void  displayUnpackingDialogUnpackArchive(){
+
+        unpackingFileDialog.show(stage);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                unzip.unarchiveFiles(selectedFiles, app.getUnarchivedFilesFolderPath());
+
+                //that's how you communicate with the rendering thread using libGDX (in order to send some results)
+                Gdx.app.postRunnable(new Runnable() {
+                    @Override
+                    public void run() {
+                        unpackingFileDialog.hide();
+                    }
+                });
+            }
+        }).start();
+
+    }
+
 
     private void getSelectedFiles() {
 
@@ -264,27 +323,27 @@ public class LobbyScreen implements Screen {
 
         Texture upFolderTexture = new Texture("upfolder.png");
         TextureRegion upFolderT_Region = new TextureRegion(upFolderTexture);
-        upFolderIcon = new Image(upFolderT_Region);
+        Image upFolderIcon = new Image(upFolderT_Region);
 
         //some white spaces introduced because of a problem with proper displaying in the table
-        Label descriptionOfUpFolderLabel = new Label("Up one level" + "                           ", labelStyle);
+        Label descriptionOfUpFolderLabel = new Label("Up one level                  " , labelStyle);
 
-        selectAllCheckBox = new CheckBox(" ", skin);
+        selectAllCheckBox = (new CheckBox(" ", skin));
 
         dummyTable.add(upFolderIcon);
         dummyTable.add(descriptionOfUpFolderLabel).left();
         dummyTable.add(selectAllCheckBox).expand().fill();
 
-        // dummyTable.debug();
+         dummyTable.debug();
 
         rootTable.add(dummyTable);
         rootTable.row();
 
-        addListenersUpFolderSelectBox();
+        addListenersUpFolderSelectBox(upFolderIcon);
 
     }
 
-    private void addListenersUpFolderSelectBox() {
+    private void addListenersUpFolderSelectBox(Image upFolderIcon) {
 
         upFolderIcon.addListener(new ClickListener() {
             @Override
@@ -337,12 +396,12 @@ public class LobbyScreen implements Screen {
         scrollPane.setFadeScrollBars(true);
         scrollPane.setScrollingDisabled(true, false);
 
-        rootTable.add(scrollPane).width(app.deviceWidth).height(13 * app.heightDistanceUnit);
+        rootTable.add(scrollPane).width(Start.deviceWidth).height(13 * Start.heightDistanceUnit);
         rootTable.row();
 
         currentRootFolderPathLabel = new Label(rootFolderPath, labelStyle);
 
-        rootTable.add(currentRootFolderPathLabel).padTop(app.heightDistanceUnit / 4);
+        rootTable.add(currentRootFolderPathLabel).padTop(Start.heightDistanceUnit / 4);
     }
 
 
@@ -350,11 +409,11 @@ public class LobbyScreen implements Screen {
         final FileHandle[] files = rootFolder.list();
         tableFileEntries = new TableFileEntry[files.length];
 
+
         Label currentLabel;
 
         Image currentImage;
         String currentFileName;
-        int noDisplayedChars;
         CheckBox simpleCheckBox;
 
         scrollPaneTable.row().top();
@@ -389,6 +448,7 @@ public class LobbyScreen implements Screen {
 
         // scrollPaneTable.debug();
 
+        selectAllCheckBox.setChecked(false);
     }
 
 
@@ -457,7 +517,6 @@ public class LobbyScreen implements Screen {
 
     }
 
-
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -490,167 +549,8 @@ public class LobbyScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 
 
-    public Stage getStage() {
-        return stage;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public Start getApp() {
-        return app;
-    }
-
-    public void setApp(Start app) {
-        this.app = app;
-    }
-
-    public Table getRootTable() {
-        return rootTable;
-    }
-
-    public void setRootTable(Table rootTable) {
-        this.rootTable = rootTable;
-    }
-
-    public Skin getSkin() {
-        return skin;
-    }
-
-    public void setSkin(Skin skin) {
-        this.skin = skin;
-    }
-
-    public ScrollPane getScrollPane() {
-        return scrollPane;
-    }
-
-    public void setScrollPane(ScrollPane scrollPane) {
-        this.scrollPane = scrollPane;
-    }
-
-    public Table getScrollPaneTable() {
-        return scrollPaneTable;
-    }
-
-    public void setScrollPaneTable(Table scrollPaneTable) {
-        this.scrollPaneTable = scrollPaneTable;
-    }
-
-    public TableFileEntry[] getTableFileEntries() {
-        return tableFileEntries;
-    }
-
-    public void setTableFileEntries(TableFileEntry[] tableFileEntries) {
-        this.tableFileEntries = tableFileEntries;
-    }
-
-    public BitmapFont getGilsansFont() {
-        return gilsansFont;
-    }
-
-    public void setGilsansFont(BitmapFont gilsansFont) {
-        this.gilsansFont = gilsansFont;
-    }
-
-    public TextureRegion getMp3T_Region() {
-        return mp3T_Region;
-    }
-
-    public void setMp3T_Region(TextureRegion mp3T_Region) {
-        this.mp3T_Region = mp3T_Region;
-    }
-
-    public TextureRegion getMp4T_Region() {
-        return mp4T_Region;
-    }
-
-    public void setMp4T_Region(TextureRegion mp4T_Region) {
-        this.mp4T_Region = mp4T_Region;
-    }
-
-    public TextureRegion getRandomFileT_Region() {
-        return randomFileT_Region;
-    }
-
-    public void setRandomFileT_Region(TextureRegion randomFileT_Region) {
-        this.randomFileT_Region = randomFileT_Region;
-    }
-
-    public TextureRegion getFolderT_Region() {
-        return folderT_Region;
-    }
-
-    public void setFolderT_Region(TextureRegion folderT_Region) {
-        this.folderT_Region = folderT_Region;
-    }
-
-    public TextureRegion getImageIconT_Region() {
-        return imageIconT_Region;
-    }
-
-    public void setImageIconT_Region(TextureRegion imageIconT_Region) {
-        this.imageIconT_Region = imageIconT_Region;
-    }
-
-    public Image getUpFolderIcon() {
-        return upFolderIcon;
-    }
-
-    public void setUpFolderIcon(Image upFolderIcon) {
-        this.upFolderIcon = upFolderIcon;
-    }
-
-    public CheckBox getSelectAllCheckBox() {
-        return selectAllCheckBox;
-    }
-
-    public void setSelectAllCheckBox(CheckBox selectAllCheckBox) {
-        this.selectAllCheckBox = selectAllCheckBox;
-    }
-
-    public String getRootFolderPath() {
-        return rootFolderPath;
-    }
-
-    public void setRootFolderPath(String rootFolderPath) {
-        this.rootFolderPath = rootFolderPath;
-    }
-
-    public FileHandle getRootFolder() {
-        return rootFolder;
-    }
-
-    public void setRootFolder(FileHandle rootFolder) {
-        this.rootFolder = rootFolder;
-    }
-
-    public Label getCurrentRootFolderPathLabel() {
-        return currentRootFolderPathLabel;
-    }
-
-    public void setCurrentRootFolderPathLabel(Label currentRootFolderPathLabel) {
-        this.currentRootFolderPathLabel = currentRootFolderPathLabel;
-    }
-
-    public Label.LabelStyle getLabelStyle() {
-        return labelStyle;
-    }
-
-    public void setLabelStyle(Label.LabelStyle labelStyle) {
-        this.labelStyle = labelStyle;
-    }
-
-    public SelectBoxStates getSelectBox_State() {
-        return selectBox_State;
-    }
-
-    public void setSelectBox_State(SelectBoxStates selectBox_State) {
-        this.selectBox_State = selectBox_State;
-    }
 }
