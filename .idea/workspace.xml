@@ -4,14 +4,48 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0889db26-f580-4455-89b9-957937408c59" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/com/mygdx/icompress/LoadingScreen.java" afterPath="" />
-      <change type="DELETED" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LoadingScreen.java" afterPath="" />
+    <list default="true" id="0889db26-f580-4455-89b9-957937408c59" name="Default" comment="Loading Dialogs work properly">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/assets/zipIcon.png" />
+      <change type="NEW" beforePath="" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/zipIcon.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/android/build/intermediates/assets/debug/loadingCircle.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LoadingScreen.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$4$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/MyCheckBox.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/pre-dexed/debug/core-1.0_868f233ca4fc2f5462e77ffd273f856a2c4f938c.jar" afterPath="$PROJECT_DIR$/android/build/intermediates/pre-dexed/debug/core-1.0_868f233ca4fc2f5462e77ffd273f856a2c4f938c.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/android/build/intermediates/res/resources-debug.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/outputs/apk/android-debug-unaligned.apk" afterPath="$PROJECT_DIR$/android/build/outputs/apk/android-debug-unaligned.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/outputs/apk/android-debug.apk" afterPath="$PROJECT_DIR$/android/build/outputs/apk/android-debug.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$1.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$2.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$3.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$4.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$5$1.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$5$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$5.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$6.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$7.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/LobbyScreen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/SplashScreen.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/SplashScreen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/Start.class" afterPath="$PROJECT_DIR$/core/build/classes/main/com/mygdx/icompress/Start.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/android.iml" afterPath="$PROJECT_DIR$/android/android.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/mygdx/icompress/LobbyScreen.java" afterPath="$PROJECT_DIR$/core/src/com/mygdx/icompress/LobbyScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/mygdx/icompress/SplashScreen.java" afterPath="$PROJECT_DIR$/core/src/com/mygdx/icompress/SplashScreen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/mygdx/icompress/Start.java" afterPath="$PROJECT_DIR$/core/src/com/mygdx/icompress/Start.java" />
+      <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/.idea/misc.xml" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/.idea/workspace.xml" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/android.iml" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/android.iml" />
+      <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/build/intermediates/dex-cache/cache.xml" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/build/intermediates/dex-cache/cache.xml" />
       <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LobbyScreen.java" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LobbyScreen.java" />
-      <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/SplashScreen.java" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/SplashScreen.java" />
       <change type="MODIFICATION" beforePath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java" afterPath="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java" />
     </list>
     <ignored path="ICompress.iws" />
@@ -45,34 +79,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LobbyScreen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LobbyScreen.java" pinned="false" current-in-tab="false">
         <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LobbyScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+            <state relative-caret-position="158">
+              <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
               <folding>
-                <element signature="e#4876#5061#0" expanded="true" />
-                <element signature="e#5060#5061#0" expanded="true" />
-                <element signature="e#5098#5455#0" expanded="true" />
-                <element signature="e#5454#5455#0" expanded="true" />
-                <element signature="e#5622#5631#0" expanded="true" />
-                <element signature="e#7948#8556#0" expanded="true" />
-                <element signature="e#8555#8556#0" expanded="true" />
-                <element signature="e#8786#9486#0" expanded="true" />
-                <element signature="e#9122#9452#0" expanded="true" />
-                <element signature="e#9451#9452#0" expanded="true" />
-                <element signature="e#9485#9486#0" expanded="true" />
-                <element signature="e#9625#10143#0" expanded="true" />
-                <element signature="e#9939#10117#0" expanded="true" />
-                <element signature="e#10024#10025#0" expanded="false" />
-                <element signature="e#10098#10099#0" expanded="false" />
-                <element signature="e#10116#10117#0" expanded="true" />
-                <element signature="e#10142#10143#0" expanded="true" />
-                <element signature="e#11395#12172#0" expanded="true" />
-                <element signature="e#12171#12172#0" expanded="true" />
-                <element signature="e#12214#12931#0" expanded="true" />
-                <element signature="e#12930#12931#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#5560#5745#0" expanded="true" />
+                <element signature="e#5744#5745#0" expanded="true" />
+                <element signature="e#5783#6164#0" expanded="true" />
+                <element signature="e#6163#6164#0" expanded="true" />
+                <element signature="e#6199#6813#0" expanded="true" />
+                <element signature="e#6812#6813#0" expanded="true" />
+                <element signature="e#6980#6989#0" expanded="true" />
+                <element signature="e#9382#9990#0" expanded="true" />
+                <element signature="e#9989#9990#0" expanded="true" />
+                <element signature="e#10220#10920#0" expanded="true" />
+                <element signature="e#10556#10886#0" expanded="true" />
+                <element signature="e#10885#10886#0" expanded="true" />
+                <element signature="e#10919#10920#0" expanded="true" />
+                <element signature="e#11059#11577#0" expanded="true" />
+                <element signature="e#11373#11551#0" expanded="true" />
+                <element signature="e#11550#11551#0" expanded="true" />
+                <element signature="e#11576#11577#0" expanded="true" />
+                <element signature="e#12867#13644#0" expanded="true" />
+                <element signature="e#13643#13644#0" expanded="true" />
+                <element signature="e#13686#14403#0" expanded="true" />
+                <element signature="e#14402#14403#0" expanded="true" />
+                <element signature="e#19523#19524#0" expanded="true" />
+                <element signature="e#19554#19555#0" expanded="true" />
+                <element signature="e#19608#19609#0" expanded="true" />
+                <element signature="e#19647#19648#0" expanded="true" />
+                <element signature="e#19818#19819#0" expanded="true" />
+                <element signature="e#19855#19856#0" expanded="true" />
+                <element signature="e#19907#19908#0" expanded="true" />
+                <element signature="e#19956#19957#0" expanded="true" />
+                <element signature="e#20175#20176#0" expanded="true" />
+                <element signature="e#20227#20228#0" expanded="true" />
+                <element signature="e#20268#20269#0" expanded="true" />
+                <element signature="e#20301#20302#0" expanded="true" />
+                <element signature="e#20357#20358#0" expanded="true" />
+                <element signature="e#20401#20402#0" expanded="true" />
+                <element signature="e#20442#20443#0" expanded="true" />
+                <element signature="e#20480#20481#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Start.java" pinned="false" current-in-tab="true">
+        <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="archive.png" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/archive.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zip.png" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/zip.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zipIcon.png" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/zipIcon.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableFileEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/TableFileEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="131">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2052,9 +2144,9 @@
         <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/MyDialog.java" />
         <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LoadingScreen.java" />
         <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LoadingGifActor.java" />
-        <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java" />
         <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/MyCheckBox.java" />
         <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LobbyScreen.java" />
+        <option value="/mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java" />
       </list>
     </option>
   </component>
@@ -2089,6 +2181,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2203,10 +2299,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2559,38 +2651,38 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.49245432" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43312103" sideWeight="0.5059571" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36942676" sideWeight="0.4940429" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.4892772" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32961783" sideWeight="0.50754565" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43312103" sideWeight="0.49722" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="165" y="224" width="1101" height="544" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34872612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2112788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2112788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39968154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="165" y="224" width="1101" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2625,28 +2717,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/SplashScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/src/com/mygdx/icompress/AndroidLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2666,27 +2736,44 @@
         <state relative-caret-position="1725">
           <caret line="141" column="17" selection-start-line="141" selection-start-column="17" selection-end-line="141" selection-end-column="17" />
           <folding>
-            <element signature="e#4876#5061#0" expanded="true" />
-            <element signature="e#5060#5061#0" expanded="true" />
-            <element signature="e#5098#5455#0" expanded="true" />
-            <element signature="e#5454#5455#0" expanded="true" />
-            <element signature="e#5622#5631#0" expanded="true" />
-            <element signature="e#7948#8556#0" expanded="true" />
-            <element signature="e#8555#8556#0" expanded="true" />
-            <element signature="e#8786#9486#0" expanded="true" />
-            <element signature="e#9122#9452#0" expanded="true" />
-            <element signature="e#9451#9452#0" expanded="true" />
-            <element signature="e#9485#9486#0" expanded="true" />
-            <element signature="e#9625#10143#0" expanded="true" />
-            <element signature="e#9939#10117#0" expanded="true" />
-            <element signature="e#10024#10025#0" expanded="false" />
-            <element signature="e#10098#10099#0" expanded="false" />
-            <element signature="e#10116#10117#0" expanded="true" />
-            <element signature="e#10142#10143#0" expanded="true" />
-            <element signature="e#11395#12172#0" expanded="true" />
-            <element signature="e#12171#12172#0" expanded="true" />
-            <element signature="e#12214#12931#0" expanded="true" />
-            <element signature="e#12930#12931#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5560#5745#0" expanded="true" />
+            <element signature="e#5744#5745#0" expanded="true" />
+            <element signature="e#5783#6164#0" expanded="true" />
+            <element signature="e#6163#6164#0" expanded="true" />
+            <element signature="e#6199#6813#0" expanded="true" />
+            <element signature="e#6812#6813#0" expanded="true" />
+            <element signature="e#6980#6989#0" expanded="true" />
+            <element signature="e#9382#9990#0" expanded="true" />
+            <element signature="e#9989#9990#0" expanded="true" />
+            <element signature="e#10220#10920#0" expanded="true" />
+            <element signature="e#10556#10886#0" expanded="true" />
+            <element signature="e#10885#10886#0" expanded="true" />
+            <element signature="e#10919#10920#0" expanded="true" />
+            <element signature="e#11059#11577#0" expanded="true" />
+            <element signature="e#11373#11551#0" expanded="true" />
+            <element signature="e#11550#11551#0" expanded="true" />
+            <element signature="e#11576#11577#0" expanded="true" />
+            <element signature="e#12867#13644#0" expanded="true" />
+            <element signature="e#13643#13644#0" expanded="true" />
+            <element signature="e#13686#14403#0" expanded="true" />
+            <element signature="e#14402#14403#0" expanded="true" />
+            <element signature="e#19523#19524#0" expanded="true" />
+            <element signature="e#19554#19555#0" expanded="true" />
+            <element signature="e#19608#19609#0" expanded="true" />
+            <element signature="e#19647#19648#0" expanded="true" />
+            <element signature="e#19818#19819#0" expanded="true" />
+            <element signature="e#19855#19856#0" expanded="true" />
+            <element signature="e#19907#19908#0" expanded="true" />
+            <element signature="e#19956#19957#0" expanded="true" />
+            <element signature="e#20175#20176#0" expanded="true" />
+            <element signature="e#20227#20228#0" expanded="true" />
+            <element signature="e#20268#20269#0" expanded="true" />
+            <element signature="e#20301#20302#0" expanded="true" />
+            <element signature="e#20357#20358#0" expanded="true" />
+            <element signature="e#20401#20402#0" expanded="true" />
+            <element signature="e#20442#20443#0" expanded="true" />
+            <element signature="e#20480#20481#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2699,14 +2786,14 @@
       </provider>
     </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/build.gradle">
@@ -2766,13 +2853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/TableFileEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="29" column="113" selection-start-line="29" selection-start-column="113" selection-end-line="29" selection-end-column="113" />
         </state>
       </provider>
     </entry>
@@ -2838,14 +2918,14 @@
       </provider>
     </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-manifest">
-        <state />
       </provider>
     </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/src/com/mygdx/icompress/AndroidLauncher.java">
@@ -2929,14 +3009,6 @@
       </provider>
     </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/MyCheckBox.java" />
-    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="95" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LoadingScreen.java" />
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/MyDialog.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -2980,33 +3052,81 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/TableFileEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/archive.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/zip.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/android/assets/zipIcon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/LobbyScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="82" column="24" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+        <state relative-caret-position="158">
+          <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
           <folding>
-            <element signature="e#4876#5061#0" expanded="true" />
-            <element signature="e#5060#5061#0" expanded="true" />
-            <element signature="e#5098#5455#0" expanded="true" />
-            <element signature="e#5454#5455#0" expanded="true" />
-            <element signature="e#5622#5631#0" expanded="true" />
-            <element signature="e#7948#8556#0" expanded="true" />
-            <element signature="e#8555#8556#0" expanded="true" />
-            <element signature="e#8786#9486#0" expanded="true" />
-            <element signature="e#9122#9452#0" expanded="true" />
-            <element signature="e#9451#9452#0" expanded="true" />
-            <element signature="e#9485#9486#0" expanded="true" />
-            <element signature="e#9625#10143#0" expanded="true" />
-            <element signature="e#9939#10117#0" expanded="true" />
-            <element signature="e#10024#10025#0" expanded="false" />
-            <element signature="e#10098#10099#0" expanded="false" />
-            <element signature="e#10116#10117#0" expanded="true" />
-            <element signature="e#10142#10143#0" expanded="true" />
-            <element signature="e#11395#12172#0" expanded="true" />
-            <element signature="e#12171#12172#0" expanded="true" />
-            <element signature="e#12214#12931#0" expanded="true" />
-            <element signature="e#12930#12931#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5560#5745#0" expanded="true" />
+            <element signature="e#5744#5745#0" expanded="true" />
+            <element signature="e#5783#6164#0" expanded="true" />
+            <element signature="e#6163#6164#0" expanded="true" />
+            <element signature="e#6199#6813#0" expanded="true" />
+            <element signature="e#6812#6813#0" expanded="true" />
+            <element signature="e#6980#6989#0" expanded="true" />
+            <element signature="e#9382#9990#0" expanded="true" />
+            <element signature="e#9989#9990#0" expanded="true" />
+            <element signature="e#10220#10920#0" expanded="true" />
+            <element signature="e#10556#10886#0" expanded="true" />
+            <element signature="e#10885#10886#0" expanded="true" />
+            <element signature="e#10919#10920#0" expanded="true" />
+            <element signature="e#11059#11577#0" expanded="true" />
+            <element signature="e#11373#11551#0" expanded="true" />
+            <element signature="e#11550#11551#0" expanded="true" />
+            <element signature="e#11576#11577#0" expanded="true" />
+            <element signature="e#12867#13644#0" expanded="true" />
+            <element signature="e#13643#13644#0" expanded="true" />
+            <element signature="e#13686#14403#0" expanded="true" />
+            <element signature="e#14402#14403#0" expanded="true" />
+            <element signature="e#19523#19524#0" expanded="true" />
+            <element signature="e#19554#19555#0" expanded="true" />
+            <element signature="e#19608#19609#0" expanded="true" />
+            <element signature="e#19647#19648#0" expanded="true" />
+            <element signature="e#19818#19819#0" expanded="true" />
+            <element signature="e#19855#19856#0" expanded="true" />
+            <element signature="e#19907#19908#0" expanded="true" />
+            <element signature="e#19956#19957#0" expanded="true" />
+            <element signature="e#20175#20176#0" expanded="true" />
+            <element signature="e#20227#20228#0" expanded="true" />
+            <element signature="e#20268#20269#0" expanded="true" />
+            <element signature="e#20301#20302#0" expanded="true" />
+            <element signature="e#20357#20358#0" expanded="true" />
+            <element signature="e#20401#20402#0" expanded="true" />
+            <element signature="e#20442#20443#0" expanded="true" />
+            <element signature="e#20480#20481#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///mnt/92AEC018AEBFF339/proiecte/ProiecteAndroid/ICompress/core/src/com/mygdx/icompress/Start.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

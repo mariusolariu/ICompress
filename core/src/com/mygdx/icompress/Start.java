@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import java.io.File;
 
 public class Start extends Game {
-	public static final int SPLASHSCREEN_TIMER = 300;
+	public static final int SPLASHSCREEN_TIMER = 1000;
 	public static int deviceWidth;
 	public static int deviceHeight;
 	public static int heightDistanceUnit;
@@ -30,7 +30,7 @@ public class Start extends Game {
 
 		createAppFolders();
 
-		setScreen(new LobbyScreen(this));
+		setScreen(new SplashScreen(this));
 
 	}
 

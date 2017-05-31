@@ -28,7 +28,10 @@ import com.mygdx.archiveAlgorithm.UnZip;
 import com.mygdx.archiveAlgorithm.Zip;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+
 
 
 /**
@@ -60,6 +63,7 @@ public class LobbyScreen implements Screen {
     private TextureRegion randomFileT_Region;
     private TextureRegion folderT_Region;
     private TextureRegion imageIconT_Region;
+    private TextureRegion archiveT_Region;
     private TextureRegionDrawable backgroundDrawable;
 
 
@@ -107,7 +111,7 @@ public class LobbyScreen implements Screen {
         createIconResources();
         initializeRootTable();
         initializeDialogs();
-        initializeArchiveTable();
+        initializeTopTable();
         initializeScrollPanel();
         addScrollablePaneContent();
 
@@ -125,33 +129,44 @@ public class LobbyScreen implements Screen {
 
     }
 
-    private void initializeArchiveTable() {
-        Table archiveTable = new Table();
-
-        archiveTable.setBackground(backgroundDrawable);
+    private void initializeTopTable() {
+        Table dummyTabel = new Table();
+        dummyTabel.setBackground(backgroundDrawable);
 
         Texture archiveTexture = new Texture("archive.png");
         TextureRegion archiveTextureR = new TextureRegion(archiveTexture);
-        Image archiveImg = new Image(archiveTextureR);
+        Image archiveIcon = new Image(archiveTextureR);
 
         Texture unarchiveTexture = new Texture("unarchive.png");
         TextureRegion unarchiveTextureR = new TextureRegion(unarchiveTexture);
-        Image unarchiveImg = new Image(unarchiveTextureR);
+        Image unarchiveIcon = new Image(unarchiveTextureR);
 
-        archiveTable.add(archiveImg).right();
-        archiveTable.add(unarchiveImg).left();
+        Texture networkTexture = new Texture("network.png");
+        TextureRegion networkT_Region = new TextureRegion(networkTexture);
+        Image networkIcon = new Image(networkT_Region);
 
-        rootTable.add(archiveTable).height(2 * Start.heightDistanceUnit).padBottom(Start.heightDistanceUnit);
-        rootTable.row();
+        Texture deleteTexture = new Texture("delete.png");
+        TextureRegion deleteT_Region = new TextureRegion(deleteTexture);
+        Image deleteIcon = new Image(new TextureRegion(deleteT_Region));
 
-        addListenersArchiveIcons(archiveImg, unarchiveImg);
+            dummyTabel.add(networkIcon);
+            dummyTabel.add(archiveIcon).right();
+            dummyTabel.add(unarchiveIcon).left();
+            dummyTabel.add(deleteIcon);
+
+            rootTable.add(dummyTabel).height(2 * Start.heightDistanceUnit).padBottom(Start.heightDistanceUnit);
+            rootTable.row();
+
+        addListenersArchiveIcons(networkIcon, archiveIcon, unarchiveIcon, deleteIcon);
 
         createUpFolderBar();
     }
 
-    private void addListenersArchiveIcons(final Image archiveImg, Image unarchiveImg) {
+    private void addListenersArchiveIcons(Image networkIcon,  Image archiveIcon, Image unarchiveIcon, Image deleteIcon) {
 
-        archiveImg.addListener(new ClickListener() {
+        //// TODO: 31.05.2017 add listener for the networkIcon
+
+        archiveIcon.addListener(new ClickListener() {
 
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -159,11 +174,11 @@ public class LobbyScreen implements Screen {
             }
         });
 
-        unarchiveImg.addListener(new ClickListener() {
+        unarchiveIcon.addListener(new ClickListener() {
 
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //clears the previous files
+                //clears the previous stored files in the ArrayList
                 selectedFiles.clear();
 
                 getSelectedFiles();
@@ -171,6 +186,30 @@ public class LobbyScreen implements Screen {
                 removeNonArchiveFiles();
 
                 displayUnpackingDialogUnpackArchive();
+
+            }
+        });
+
+        deleteIcon.addListener(new ClickListener(){
+
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+
+                //clears the previous stored files in the ArrayList
+                selectedFiles.clear();
+
+                getSelectedFiles();
+
+                for (File f : selectedFiles){
+                    f.delete();
+                }
+
+                //update the content of the scrollable pane
+
+                //discard the previous content
+                tableFileEntries = null;
+                scrollPaneTable.reset();
+                addScrollablePaneContent();
 
             }
         });
@@ -230,8 +269,8 @@ public class LobbyScreen implements Screen {
         TextButton okButton = new TextButton("Ok", skin);
 
         archiveNameDialog.text("Please type an archive name \n and hit <<ok>> button !").row();
-        archiveNameDialog.getButtonTable().add(archiveNameT_Field).width(2 * dialogWidth / 3).row();
-        archiveNameDialog.getButtonTable().add(okButton).width(dialogWidth / 3);
+        archiveNameDialog.getButtonTable().add(archiveNameT_Field).width(2 * dialogWidth / 3).padBottom(Start.heightDistanceUnit/4).row();
+        archiveNameDialog.getButtonTable().add(okButton).width(dialogWidth / 3).padBottom(Start.heightDistanceUnit/4);
 
         okButton.addListener(new ClickListener() {
             @Override
@@ -318,26 +357,27 @@ public class LobbyScreen implements Screen {
 
     private void createUpFolderBar() {
         Table dummyTable = new Table();
-
         dummyTable.setBackground(backgroundDrawable);
 
         Texture upFolderTexture = new Texture("upfolder.png");
         TextureRegion upFolderT_Region = new TextureRegion(upFolderTexture);
         Image upFolderIcon = new Image(upFolderT_Region);
 
-        //some white spaces introduced because of a problem with proper displaying in the table
-        Label descriptionOfUpFolderLabel = new Label("Up one level                  " , labelStyle);
+        //some white spaces introduced because of a problem with proper displaying in the table (@noob)
+        Label descriptionOfUpFolderLabel = new Label("Up one level                        " , labelStyle);
 
-        selectAllCheckBox = (new CheckBox(" ", skin));
+        selectAllCheckBox = new CheckBox(" ", skin);
 
-        dummyTable.add(upFolderIcon);
-        dummyTable.add(descriptionOfUpFolderLabel).left();
-        dummyTable.add(selectAllCheckBox).expand().fill();
 
-         dummyTable.debug();
+            dummyTable.add(upFolderIcon);
+            dummyTable.add(descriptionOfUpFolderLabel).left();
+            dummyTable.add(selectAllCheckBox).expand().fill();
 
-        rootTable.add(dummyTable);
-        rootTable.row();
+            //dummyTable.debug();
+
+
+            rootTable.add(dummyTable);
+            rootTable.row();
 
         addListenersUpFolderSelectBox(upFolderIcon);
 
@@ -411,21 +451,26 @@ public class LobbyScreen implements Screen {
 
 
         Label currentLabel;
-
         Image currentImage;
         String currentFileName;
         CheckBox simpleCheckBox;
+        Double fileSize;
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
 
-        scrollPaneTable.row().top();
 
         for (int i = 0; i < files.length; i++) {
             currentFileName = files[i].name();
+            fileSize = (double)files[i].length() / (1024 * 1024); // in MB
 
-            // each filename will have a length of 30 chars, either of it's own or filled with spaces
-            if (currentFileName.length() > 25) {
-                currentFileName = currentFileName.substring(0, 25);
+
+            // each filename will have a length of 24 chars, either of it's own or filled with spaces
+            if (currentFileName.length() > 18) {
+                currentFileName = currentFileName.substring(0, 18);
             }
-            currentFileName = String.format("%-25s", currentFileName);
+            currentFileName = String.format("%-18s", currentFileName);
+
+            if (!files[i].isDirectory()) currentFileName += " / " + df.format(fileSize) + " MB";
 
             simpleCheckBox = new CheckBox(" ", skin);
             currentLabel = new Label(currentFileName, labelStyle);
@@ -459,7 +504,7 @@ public class LobbyScreen implements Screen {
 
         if (file.isDirectory()) {
             option = 'd';
-        } else {
+        } else { // select the last letter of the files's name
             fileName = file.name();
             lengthOfFileName = fileName.length();
             option = fileName.charAt(lengthOfFileName - 1);
@@ -482,8 +527,15 @@ public class LobbyScreen implements Screen {
                 //jpg file
 
                 //some files end in 'g' but they are not "jpg" => I will do an extra check
-                if (fileName.charAt(lengthOfFileName - 2) == 'p') {
+                if (".jpg".equals(fileName.substring(lengthOfFileName - 4, lengthOfFileName))) {
                     return imageIconT_Region;
+                }
+
+            case 'p':
+                //zip file
+
+                if (".zip".equals(fileName.substring(lengthOfFileName - 4, lengthOfFileName))){
+                    return archiveT_Region;
                 }
 
             default:
@@ -514,7 +566,8 @@ public class LobbyScreen implements Screen {
         Texture imageIconTexture = new Texture("img.png");
         imageIconT_Region = new TextureRegion(imageIconTexture);
 
-
+        Texture archiveTexture = new Texture("zipIcon.png");
+        archiveT_Region = new TextureRegion(archiveTexture);
     }
 
     @Override
@@ -551,6 +604,48 @@ public class LobbyScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+
+    public TableFileEntry[] getTableFileEntries() {
+        return tableFileEntries;
+    }
+
+    public void setTableFileEntries(TableFileEntry[] tableFileEntries) {
+        this.tableFileEntries = tableFileEntries;
+    }
+
+    public String getRootFolderPath() {
+        return rootFolderPath;
+    }
+
+    public Label getCurrentRootFolderPathLabel() {
+        return currentRootFolderPathLabel;
+    }
+
+    public void setCurrentRootFolderPathLabel(Label currentRootFolderPathLabel) {
+        this.currentRootFolderPathLabel = currentRootFolderPathLabel;
+    }
+
+    public void setRootFolderPath(String rootFolderPath) {
+        this.rootFolderPath = rootFolderPath;
+    }
+
+    public FileHandle getRootFolder() {
+        return rootFolder;
+    }
+
+    public void setRootFolder(FileHandle rootFolder) {
+        this.rootFolder = rootFolder;
+    }
+
+    public Table getScrollPaneTable() {
+        return scrollPaneTable;
+    }
+
+    public void setScrollPaneTable(Table scrollPaneTable) {
+        this.scrollPaneTable = scrollPaneTable;
+    }
+
 
 
 }
