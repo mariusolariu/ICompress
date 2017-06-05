@@ -1,5 +1,8 @@
 package com.mygdx.server;
 
+import com.mygdx.archiveAlgorithm.UnZip;
+import com.mygdx.archiveAlgorithm.Zip;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -34,7 +37,7 @@ public class ClientProcessor implements Runnable{
 
                 //We are waiting the client's request
                 //TODO change type
-                Object response = read();
+                ZipObject order = read();
                 InetSocketAddress remote = (InetSocketAddress)sock.getRemoteSocketAddress();
 
                 //We display some information for the debug
@@ -42,15 +45,23 @@ public class ClientProcessor implements Runnable{
                 debug = "Thread : " + Thread.currentThread().getName() + ". ";
                 debug += "Request the address : " + remote.getAddress().getHostAddress() +".";
                 debug += " On the port : " + remote.getPort() + ". ";
-                debug += "\t -> Order received : " + response.toString() + "\n";
+                debug += "\t -> Order received : " + order.toString() + "\n";
 
                 System.out.println(debug);
 
                 //We treat the client's request in function of the sent request
-                Object toSend = null;
+                ZipObject toSend = null;
 
-
+                if (order.isForZip()){
+                    Zip zipper = new Zip();
+                    zipper.archiveFiles(order.getArchiveFiles(), order.getDestPath(), order.getArchiveName());
+                }
+                else {
+                    UnZip unZipper = new UnZip();
+                    unZipper.unarchiveFiles(order.getArchiveFiles(), order.getDestPath());
+                }
                 //TODO create the result
+
 
 
                 //We send the reply to the client
@@ -73,13 +84,13 @@ public class ClientProcessor implements Runnable{
     }
 
     //Method to read the client's reply
-    private Object read() throws IOException {
+    private ZipObject read() throws IOException {
         Object result = null;
         try {
             result = reader.readObject();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return result;
+        return (ZipObject) result;
     }
 }
