@@ -2,20 +2,10 @@ package com.mygdx.archiveAlgorithm;
 
 import com.badlogic.gdx.Gdx;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-
-
-import static com.badlogic.gdx.Gdx.files;
-import static javax.script.ScriptEngine.FILENAME;
 
 /**
  * Created by root on 28.05.2017.
@@ -46,6 +36,8 @@ public class Zip {
                 origin = new BufferedInputStream(fi, BUFFER);
                 ZipEntry entry = new ZipEntry(f.getName());
 
+                //ZipEntry
+
                 //before writing the data to the output stream you first have to put the zip object
                 out.putNextEntry(entry);
 
@@ -65,7 +57,6 @@ public class Zip {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 

@@ -53,12 +53,14 @@ public class ClientProcessor implements Runnable{
                 ZipObject toSend = null;
 
                 if (order.isForZip()){
-                    Zip zipper = new Zip();
-                    zipper.archiveFiles(order.getArchiveFiles(), order.getDestPath(), order.getArchiveName());
+//                    Zip zipper = new Zip();
+//                    zipper.archiveFiles(order.getArchiveFiles(), order.getDestPath(), order.getArchiveName());
+                    System.out.println("Zip");
                 }
                 else {
-                    UnZip unZipper = new UnZip();
-                    unZipper.unarchiveFiles(order.getArchiveFiles(), order.getDestPath());
+//                    UnZip unZipper = new UnZip();
+//                    unZipper.unarchiveFiles(order.getArchiveFiles(), order.getDestPath());
+                    System.out.println("Unzip");
                 }
                 //TODO create the result
 
