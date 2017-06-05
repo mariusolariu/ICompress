@@ -18,6 +18,7 @@ public class ClientProcessor implements Runnable{
     private Socket sock;
     private ObjectOutputStream writer = null;
     private ObjectInputStream reader = null;
+    private boolean isRunning = true;
 
     public ClientProcessor(Socket pSock){
         sock = pSock;
@@ -52,14 +53,16 @@ public class ClientProcessor implements Runnable{
                 //We treat the client's request in function of the sent request
                 ZipObject toSend = null;
 
-                if (order.isForZip()){
-//                    Zip zipper = new Zip();
-//                    zipper.archiveFiles(order.getArchiveFiles(), order.getDestPath(), order.getArchiveName());
+                //Files -> Archive
+                if (order.getIWantToZip()){
+                    Zip zipper = new Zip();
+                    zipper.archiveFiles(order.getArchiveFiles(), "", order.getArchiveName());
                     System.out.println("Zip");
                 }
+                //Archive -> Files
                 else {
-//                    UnZip unZipper = new UnZip();
-//                    unZipper.unarchiveFiles(order.getArchiveFiles(), order.getDestPath());
+                    UnZip unZipper = new UnZip();
+                    unZipper.unarchiveFiles(order.getArchiveFiles(), "C:\\Users\\Ronan\\Documents\\Travail\\Polytech\\4a\\Radboud\\Analysis\\Homework\\ICompress\\ICompress\\outputUnzippedFiles");
                     System.out.println("Unzip");
                 }
                 //TODO create the result
@@ -75,12 +78,16 @@ public class ClientProcessor implements Runnable{
                 //Otherwise the data will not be transmitted
                 //to the client and it will wait indefinitely
                 writer.flush();
-
+                writer.close();
+                reader.close();
             }catch(SocketException e){
                 System.err.println("THE CONNECTION IS INTERRUPTED ! ");
                 break;
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+            finally {
+                isRunning = false;
             }
         }
     }
@@ -94,5 +101,9 @@ public class ClientProcessor implements Runnable{
             e.printStackTrace();
         }
         return (ZipObject) result;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }
