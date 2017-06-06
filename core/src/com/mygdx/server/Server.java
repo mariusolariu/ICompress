@@ -12,7 +12,7 @@ import static java.lang.Thread.sleep;
  * Created by Ronan
  * on 01/05/2017.
  */
-public class Server {
+public class Server implements Runnable{
 
     //We initialize default values
     private int port = 2345;
@@ -44,7 +44,7 @@ public class Server {
     public void open(){
         while (isRunning){
             try {
-                System.out.println("Server initialize, port: " + port + "IP address: " + host);
+                System.out.println("Server initialize, port: " + port + " IP address: " + host);
                 //We are waiting a client's connection
                 Socket client = serverSocket.accept();
 
@@ -75,6 +75,9 @@ public class Server {
         System.out.println("The serverSocket is closed now...");
     }
 
+    public boolean isRunning() {
+        return isRunning;
+    }
 
     public static void main(String[] args) {
         String host = "192.168.0.103";
@@ -82,13 +85,10 @@ public class Server {
 
         Server ts = new Server(host, port);
         ts.open();
+    }
 
-        while (ts.isRunning){
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    public void run() {
+        open();
     }
 }
