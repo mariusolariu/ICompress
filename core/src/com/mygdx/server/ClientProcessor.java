@@ -3,7 +3,9 @@ package com.mygdx.server;
 import com.mygdx.archiveAlgorithm.UnZip;
 import com.mygdx.archiveAlgorithm.Zip;
 
-import java.io.EOFException;
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,8 +19,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * Created by Ronan
@@ -26,126 +26,128 @@ import java.util.NoSuchElementException;
  */
 public class ClientProcessor implements Runnable{
     private Socket sock;
-    private ObjectOutputStream writer = null;
-    private ObjectInputStream reader = null;
+    private OutputStream writer = null;
+    private InputStream reader = null;
+    private InputStream in;
+    private OutputStream out;
     private boolean isRunning = true;
+    private String outPath = "C:\\Users\\Ronan\\Documents\\Travail\\Polytech\\4a\\Radboud\\" +
+            "Analysis\\Homework\\ICompress\\ICompress\\test\\output\\";
+    private String inPath = "C:\\Users\\Ronan\\Documents\\Travail\\Polytech\\4a\\Radboud\\" +
+            "Analysis\\Homework\\ICompress\\ICompress\\test\\input\\";
 
     public ClientProcessor(Socket pSock){
         sock = pSock;
     }
 
     //We treat the requests in another thread
-    public void run(){
+    public void run() {
         System.out.println("Launching client connection processing");
 
         //As long as the connection is active, we treat the requests
-        while(!sock.isClosed()) try {
+        while (!sock.isClosed()) try {
 
-            writer = new ObjectOutputStream(sock.getOutputStream());
-            reader = new ObjectInputStream(sock.getInputStream());
+            //Initialize our streams which will make the communication between the mobile and the server
+            writer = sock.getOutputStream();
+            reader = sock.getInputStream();
 
-            //We are waiting the client's request
-            //TODO change type
-            ZipObject order = read();
-
-            writer.writeBoolean(true);
-            writer.flush();
-
-            InetSocketAddress remote = (InetSocketAddress) sock.getRemoteSocketAddress();
 
             //We display some information for the debug
+            InetSocketAddress remote = (InetSocketAddress) sock.getRemoteSocketAddress();
             String debug;
             debug = "Thread : " + Thread.currentThread().getName() + ". ";
             debug += "Request the address : " + remote.getAddress().getHostAddress() + ".";
-            debug += " On the port : " + remote.getPort() + ". ";
-            debug += "\t -> Order received : " + order.toString() + "\n";
-
+            debug += " On the port : " + remote.getPort() + ".";
             System.out.println(debug);
 
-            //Files -> Archive
-            if (order.getIWantToZip()) {
-                Zip zipper = new Zip();
-                zipper.archiveFiles(order.getArchiveFiles(), "", order.getArchiveName());
-                System.out.println("Zip");
+            //We create the new file where we will save the data
+            File file = new File(outPath + "temp.zip");
+            InputStream in = sock.getInputStream();
+
+            DataInputStream clientData = new DataInputStream(in);
+
+            int bytesRead;
+            String fileName = outPath + "temp.zip";
+            OutputStream output = new FileOutputStream(fileName);
+            long size = clientData.readLong();
+            byte[] buffer = new byte[1024];
+            while (size > 0 && (bytesRead = clientData.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
+                output.write(buffer, 0, bytesRead);
+                size -= bytesRead;
             }
-            //Archive -> Files
-            else {
-                File file = new File("C:\\Users\\Ronan\\Documents\\Travail\\Polytech\\4a\\Radboud\\Analysis\\Homework\\ICompress\\ICompress\\test\\output\\"+order.getArchiveName()+".zip");
-                byte[] bytes = new byte[16 * 1024];
-                InputStream in = sock.getInputStream();
-                OutputStream out = new FileOutputStream(file);
+            output.flush();
 
-                int count;
-                while ((count = in.read(bytes)) > 0) {
-                    out.write(bytes, 0, count);
+            System.out.println("Archive downloaded from the mobile");
+
+            //We create the folder where we will save the extracted files
+            File theDir = new File(outPath + "temp");
+            if (!theDir.exists()) {
+                System.out.println("creating directory: " + theDir.getName());
+                boolean result = false;
+                try {
+                    theDir.mkdir();
+                    result = true;
+                } catch (SecurityException se) {
+                    System.err.println(Arrays.toString(se.getStackTrace()));
                 }
-                out.flush();
-
-                UnZip unZipper = new UnZip();
-                ArrayList<File> archiveList = new ArrayList<File>();
-                archiveList.add(file);
-
-                File theDir = new File("C:\\Users\\Ronan\\Documents\\Travail\\Polytech\\4a\\Radboud\\Analysis\\Homework\\ICompress\\ICompress\\test\\output\\" + order.getArchiveName());
-
-                if (!theDir.exists()) {
-                    System.out.println("creating directory: " + theDir.getName());
-                    boolean result = false;
-                    try {
-                        theDir.mkdir();
-                        result = true;
-                    } catch (SecurityException se) {
-                        System.err.println(Arrays.toString(se.getStackTrace()));
-                    }
-                    if (result) {
-                        System.out.println("DIR created");
-                    }
+                if (result) {
+                    System.out.println("DIR created");
                 }
-
-                unZipper.unarchiveFiles(archiveList, theDir.getPath());
-
-                for (File fileEntry: theDir.listFiles()) {
-                    in = new FileInputStream(fileEntry);
-                    out = sock.getOutputStream();
-                    while ((count = in.read(bytes)) > 0) {
-                        out.write(bytes, 0, count);
-                    }
-                }
-
-
-                System.out.println("Unzip");
             }
-            //TODO create the result
 
+            //We create our UnZip Object
+            UnZip unZipper = new UnZip();
+            ArrayList<File> archiveList = new ArrayList<File>();
+            archiveList.add(file);
+            //We unzipped the archive
+            unZipper.unarchiveFiles(archiveList, theDir.getPath());
+            System.out.println("Unzipped");
 
-            //We send the reply to the client
+            //TODO convert the files into a .rar file to send it to the client
 
+            //We define the .rar we will send
+            File toSend = new File(inPath + "toSend.rar");
+            byte[] mybytearray = new byte[(int) toSend.length()];
+
+            FileInputStream fis = new FileInputStream(toSend);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+
+            DataInputStream dis = new DataInputStream(bis);
+            dis.readFully(mybytearray, 0, mybytearray.length);
+
+            OutputStream os = sock.getOutputStream();
+
+            //Sending file name and file size to the client
+            ObjectOutputStream dos = new ObjectOutputStream(os);
+            System.out.println("write");
+            dos.writeLong(mybytearray.length);
+            dos.write(mybytearray, 0, mybytearray.length);
+            dos.flush();
+
+            //Sending file data to the client
+            os.write(mybytearray, 0, mybytearray.length);
+            os.flush();
             System.out.println("Object sent to the client.");
 
-            //WE MUST USE flush()
-            //Otherwise the data will not be transmitted
-            //to the client and it will wait indefinitely
-            writer.flush();
-            writer.close();
-            reader.close();
         } catch (SocketException e) {
-            System.err.println("THE CONNECTION IS INTERRUPTED ! ");
+            System.out.println("The client disconnected");
             break;
-        } catch (IOException e) {
-            e.printStackTrace();
+        }catch (IOException e) {
+        e.printStackTrace();
         } finally {
             isRunning = false;
         }
-    }
 
-    //Method to read the client's reply
-    private ZipObject read() throws IOException {
-        Object result = null;
+        //WE MUST USE flush()
+        //Otherwise the data will not be transmitted
+        //to the client and it will wait indefinitely
         try {
-            result = reader.readObject();
-        } catch (ClassNotFoundException e) {
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return (ZipObject) result;
+
     }
 
     public boolean isRunning() {
