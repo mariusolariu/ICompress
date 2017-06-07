@@ -20,7 +20,7 @@ import java.util.zip.ZipInputStream;
 public class UnZip {
     private static final int BUFFER = 2048;
 
-    public void unarchiveFiles(ArrayList<File> archiveFiles, String unarchivedFilesFolderPath) {
+    public static void unarchiveFiles(ArrayList<File> archiveFiles, String unarchivedFilesFolderPath) {
 
         try {
             for (File f : archiveFiles) {

@@ -11,6 +11,8 @@ import android.util.Log;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.mygdx.icompress.Start;
 
+import java.io.File;
+
 import static com.badlogic.gdx.Input.Keys.A;
 
 public class AndroidLauncher extends AndroidApplication {
