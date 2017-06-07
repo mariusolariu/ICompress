@@ -1,6 +1,6 @@
 android {
     buildToolsVersion "25.0.3"
-    compileSdkVersion 22
+    compileSdkVersion 24
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -20,7 +20,7 @@ android {
     defaultConfig {
         applicationId "com.mygdx.icompress"
         minSdkVersion 22
-        targetSdkVersion 22
+        targetSdkVersion 24
     }
     productFlavors {
     }
@@ -125,4 +125,6 @@ idea {
     }
 }
 dependencies {
+    // compile files('libs/mylib/commons-compress-1.14.jar')
+    compile files('mylib/commons-compress-1.14.jar')
 }

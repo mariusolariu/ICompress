@@ -14,12 +14,11 @@ import java.util.zip.ZipOutputStream;
 public class Zip {
     static final int BUFFER = 2048;
 
-    public void archiveFiles(ArrayList<File> selectedEntries, String archivesFolderPath, String archieveName){
+    public static void archiveFiles(ArrayList<File> selectedEntries, String archivesFolderPath, String archieveName){
 
         try {
             BufferedInputStream origin = null;
             //creates the archive in the parent directory of the files
-            //TODO get a name introduced by the user for the archive
             FileOutputStream dest = new FileOutputStream(archivesFolderPath + "/" + archieveName);
             ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
 
@@ -27,7 +26,7 @@ public class Zip {
             out.setMethod(ZipOutputStream.DEFLATED);
 
             byte data[] = new byte[2048];
-            selectedEntries.size();
+           // selectedEntries.size();
 
             for (File f : selectedEntries){
                 Gdx.app.log("Adding ",  f.getName());
