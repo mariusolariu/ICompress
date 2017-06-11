@@ -70,6 +70,7 @@ public class ClientProcessor implements Runnable{
             String fileName = outPath + "temp.zip";
             OutputStream output = new FileOutputStream(fileName);
             long size = clientData.readLong();
+            System.out.println("The file's size: " + size);
             byte[] buffer = new byte[1024];
             while (size > 0 && (bytesRead = clientData.read(buffer, 0, (int) Math.min(buffer.length, size))) != -1) {
                 output.write(buffer, 0, bytesRead);
@@ -106,7 +107,7 @@ public class ClientProcessor implements Runnable{
             //TODO convert the files into a .rar file to send it to the client
 
             //We define the .rar we will send
-            File toSend = new File(inPath + "toSend.rar");
+            File toSend = new File(inPath + "toSend.zip");
             byte[] mybytearray = new byte[(int) toSend.length()];
 
             FileInputStream fis = new FileInputStream(toSend);
@@ -124,10 +125,9 @@ public class ClientProcessor implements Runnable{
             dos.write(mybytearray, 0, mybytearray.length);
             dos.flush();
 
-            //Sending file data to the client
-            os.write(mybytearray, 0, mybytearray.length);
-            os.flush();
+
             System.out.println("Object sent to the client.");
+            sock.close();
 
         } catch (SocketException e) {
             System.out.println("The client disconnected");
