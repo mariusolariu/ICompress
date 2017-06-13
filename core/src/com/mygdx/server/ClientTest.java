@@ -87,7 +87,7 @@ public class ClientTest implements Runnable{
             InputStream in = connection.getInputStream();
             ObjectInputStream clientData = new ObjectInputStream(in);
             int bytesRead;
-            File result = new File(resultPath + "result.rar");
+            File result = new File(resultPath + "result.zip");
             OutputStream output = new FileOutputStream(result);
             long size = clientData.readLong();
             System.out.println("read: " + size);
@@ -98,6 +98,7 @@ public class ClientTest implements Runnable{
                 size -= bytesRead;
             }
             output.flush();
+            in.close();
 
         } catch (IOException e1) {
             System.out.println("error !!!");
