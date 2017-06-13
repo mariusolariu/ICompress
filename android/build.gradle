@@ -19,7 +19,7 @@ android {
     }
     defaultConfig {
         applicationId "com.mygdx.icompress"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 24
     }
     productFlavors {

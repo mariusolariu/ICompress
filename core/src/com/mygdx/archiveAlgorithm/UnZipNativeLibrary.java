@@ -17,7 +17,8 @@ import java.util.zip.ZipInputStream;
  * Created by root on 27.05.2017.
  */
 
-public class UnZip {
+
+public class UnZipNativeLibrary {
     private static final int BUFFER = 2048;
 
     public static void unarchiveFiles(ArrayList<File> archiveFiles, String unarchivedFilesFolderPath) {

@@ -89,8 +89,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="gdx-backend-android-1.9.6" level="project" />
     <orderEntry type="library" exported="" name="commons-compress-1.14" level="project" />
-    <orderEntry type="library" exported="" name="gdx-freetype-1.9.6" level="project" />
     <orderEntry type="library" exported="" name="gdx-1.9.6" level="project" />
+    <orderEntry type="library" exported="" name="gdx-freetype-1.9.6" level="project" />
     <orderEntry type="module" module-name="core" exported="" />
   </component>
 </module>
