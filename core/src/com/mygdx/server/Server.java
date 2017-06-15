@@ -69,7 +69,7 @@ public class Server implements Runnable{
     }
 
     public static void main(String[] args) {
-        String host = "192.168.137.1";
+        String host = "192.168.0.108";
         int port = 2345;
 
         Server ts = new Server(host, port);

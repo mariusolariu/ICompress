@@ -22,7 +22,7 @@ public class Lz4 {
     private static int decompressedLength;
     private static LZ4Factory factory = LZ4Factory.fastestInstance();
     private static LZ4Compressor compressor = factory.fastCompressor();
-    static final int BUFFER = 2048;
+    static final int BUFFER = 11 * 2048;
 
     public static byte[] compress(byte[] src, int srcLen) {
         decompressedLength = srcLen;
@@ -110,7 +110,7 @@ public class Lz4 {
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
 
-            System.out.println("The archive " + archieveName + " was created successfully in " + df.format(timeElapsed) + " using JPountz impl. of lz4!");
+            System.out.println("The archive " + archieveName + " was created successfully in " + df.format(timeElapsed) + " seconds!");
 
 
 

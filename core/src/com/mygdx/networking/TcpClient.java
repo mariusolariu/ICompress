@@ -15,8 +15,11 @@ import java.net.Socket;
 
 public class TcpClient implements Runnable {
 
+    //each  packet contains at maximum READ_LIMIT "useful" bytes of info
+    private static final int READ_LIMIT = 7 * 8192; //56 KB
+
+
     //communication
-    private static final int READ_LIMIT = 8192;
     private DataInputStream din;
     private DataOutputStream dout;
     private Socket client;
@@ -38,6 +41,7 @@ public class TcpClient implements Runnable {
     private long fileToReceivePointerPosition;
     private long fileToReceiveLength;
     private String fTR_Name;
+    private byte[] separator;
 
 
     public TcpClient(String hostName, int portNumber, String inputFileFullPath, String outputZipFilePath) {
@@ -60,6 +64,9 @@ public class TcpClient implements Runnable {
             System.err.println("TcpClient: Unknown encoding format ");
             e.printStackTrace();
         }
+
+        separator = new byte[1];
+        separator[0] = '\\';
 
         this.inputFileFullPath = inputFileFullPath;
         this.outputZipFilePath = outputZipFilePath;
@@ -123,14 +130,15 @@ public class TcpClient implements Runnable {
                 length_buff += (char) byteRead;
             }
 
+
             int totalBytesToRead = Integer.parseInt(length_buff);
             data_buff = new byte[totalBytesToRead];
-            int byte_read = 0;
-            int byte_offset = 0;
+            int bytesRead = 0;
+            int byteOffset = 0;
 
-            while (byte_offset < totalBytesToRead) {
-                byte_read = din.read(data_buff, byte_offset, totalBytesToRead - byte_offset);
-                byte_offset += byte_read;
+            while (byteOffset < totalBytesToRead) {
+                bytesRead = din.read(data_buff, byteOffset, totalBytesToRead - byteOffset);
+                byteOffset += bytesRead;
             }
 
         } catch (IOException e) {
@@ -147,12 +155,10 @@ public class TcpClient implements Runnable {
         byte[] packet = null;
 
         try {
-            byte[] separator = new byte[1];
-            separator[0] = '\\';
 
             byte[] lengthOfMessage = String.valueOf(data.length).getBytes("UTF8");
 
-            //the standard form of a packet contains the bytes using the format from below
+            //the standard form of a packet contains the bytes using the format from below : [command, length of information in bytes, separator, useful information]
             packet = new byte[cmd.length + lengthOfMessage.length + separator.length + +data.length];
 
             //create packet
@@ -208,8 +214,8 @@ public class TcpClient implements Runnable {
 
                                 float percentageUploaded = ((float) fileToSendPointerPosition / fileToSend_ROA.length()) * 100;
 
-                                if ((int) percentageUploaded > 95){
-                                    System.out.println("Uploaded:" + percentageUploaded + "%" + " of " + fileToSend.getName());
+                                if (percentageUploaded == 100.0){
+                                    System.out.println("The client uploaded:" + percentageUploaded + "%" + " of " + fileToSend.getName());
                                 }
 
 
@@ -224,7 +230,8 @@ public class TcpClient implements Runnable {
 
                 case 128:
                         fileToReceiveLength = Long.valueOf(new String(informationBytes));
-                        System.out.println("ClientSide: The file to receive has " + fileToReceiveLength + " bytes");
+                        //System.out.println("ClientSide: The file to receive has " + fileToReceiveLength + " bytes");
+
                         //asks for the next data packet providing the position where it will write, initially 0
                         dout.write(createDataPacket(OPTION_129, String.valueOf(fileToReceivePointerPosition).getBytes("UTF8")));
                         dout.flush();

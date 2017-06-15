@@ -20,7 +20,7 @@ import java.text.DecimalFormat;
  */
 
 public class Lz4Unpack {
-    private static final int BUFFER = 2048;
+    private static final int BUFFER = 11 * 2048;
     private static LZ4Factory factory = LZ4Factory.fastestInstance();
     private static LZ4SafeDecompressor decompressor = factory.safeDecompressor();
 

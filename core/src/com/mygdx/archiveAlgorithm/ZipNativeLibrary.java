@@ -40,7 +40,7 @@ public class ZipNativeLibrary {
            // selectedEntries.size();
 
             for (File f : selectedEntries){
-                System.out.println("Adding: " + f.getName() + " file to archive " + archieveName );
+                System.out.println("Adding: <<" + f.getName() + ">> file to archive " + archieveName );
 
                 FileInputStream fi = new FileInputStream(f.getAbsolutePath());
                 origin = new BufferedInputStream(fi, BUFFER);
@@ -65,7 +65,7 @@ public class ZipNativeLibrary {
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
 
-            System.out.println("The archive " + archieveName + " was created successfully in " + df.format(timeElapsed) + "!");
+            System.out.println("The archive <<" + archieveName + ">> was created successfully in " + df.format(timeElapsed) + " seconds!");
 
             out.close();
 

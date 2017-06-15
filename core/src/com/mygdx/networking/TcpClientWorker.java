@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class TcpClientWorker implements Runnable {
 
-    //each  packet contains at maximum READ_LIMIT bytes
-    private static final int READ_LIMIT = 8192;
+    //each  packet contains at maximum READ_LIMIT "useful" bytes of info
+    private static final int READ_LIMIT = 7 * 8192; //56 KB
 
     //communication
     private Socket client;
@@ -91,7 +91,7 @@ public class TcpClientWorker implements Runnable {
 
             }
 
-            System.out.println("The file <<" + fileToSendName + ">> was sent successfully!");
+            System.out.println("The file <<" + fileToSendName + ".zip>> was sent successfully!");
 
             dout.flush();
             din.close();
@@ -242,7 +242,7 @@ public class TcpClientWorker implements Runnable {
                     //create the zip_ROA and send the zip file length
                     File zipFile = new File(zipFilesFolderPath + "/" + fileToSendName + ".zip");
                     long zipFileLength = zipFile.length();
-                    System.out.println("ServerSide: The file to send has " + zipFileLength + " bytes");
+                   // System.out.println("ServerSide: The file to send has " + zipFileLength + " bytes");
                     fileToSend_ROA = new RandomAccessFile(zipFile, "r");
 
                     dout.write(createDataPacket(OPTION_128, String.valueOf(zipFileLength).getBytes("UTF8")));
@@ -270,7 +270,7 @@ public class TcpClientWorker implements Runnable {
 
                         float percentageUploaded = ((float) fileToSendPointerPosition / fileToSend_ROA.length()) * 100;
 
-                        if ((int) percentageUploaded > 95) {
+                        if ( percentageUploaded == 100.0) {
                             //the fileToReceiveName was updated to the name of the zip file
                             System.out.println("The server sent to client: " + percentageUploaded + "%" + " of " + fileToSendName);
                         }
@@ -282,7 +282,7 @@ public class TcpClientWorker implements Runnable {
                         dout.write(createDataPacket(OPTION_131, "Close".getBytes("UTF8")));
                         dout.flush();
 
-                        //deleteContentOfStorageDirectories();
+                        deleteContentOfStorageDirectories();
                     }
 
                     break;

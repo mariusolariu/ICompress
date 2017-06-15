@@ -126,5 +126,5 @@ idea {
 }
 dependencies {
     // compile files('libs/mylib/commons-compress-1.14.jar')
-    compile files('mylib/commons-compress-1.14.jar')
+    compile files('mylib/lz4-1.3.jar')
 }
